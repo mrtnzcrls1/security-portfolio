@@ -15,9 +15,26 @@ I investigated an unauthorized test deployment in a live multi-user Azure traini
 ## Investigation
 
 1. Reviewed the Azure resource groups and identified one that did not follow the expected naming convention.
+
+![Resource groups showing the naming-convention outlier](operation-dead-deploy/screenshots/Screenshot%20%231%20Resource%20Groups.png)
+
 2. Inspected the resource and its tags to understand its ownership and purpose.
+
+![Resource tags showing ownership and deployment metadata](operation-dead-deploy/screenshots/Screenshot%20%232%20Tags.png)
+
 3. Checked the resource group's deployment history to trace how and when the resource was created.
+
+![Resource group deployment history](operation-dead-deploy/screenshots/Screenshot%20%233%20Deployments%20list.png)
+
+![Deployment inputs used during the investigation](operation-dead-deploy/screenshots/Screenshot%20%234%20Deployment%20Inputs.png)
+
 4. Reviewed the Azure Policy assignment and found that the naming policy was auditing violations rather than blocking them.
+
+![Azure Policy compliance overview](operation-dead-deploy/screenshots/Screenshot%20%235%20Policy%20Compliance%20overview.png)
+
+![Naming Convention policy compliance details](operation-dead-deploy/screenshots/Screenshot%20%236%20Naming%20Convention%20compliance%20details.png)
+
+![Naming Convention policy assignment showing Audit effect](operation-dead-deploy/screenshots/Screenshot%20%237%20Policy%20Assignment%20Parameters.png)
 
 ## What broke / what surprised me
 
