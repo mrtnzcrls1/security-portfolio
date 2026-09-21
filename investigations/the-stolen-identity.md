@@ -20,6 +20,12 @@ The user was phished and completed MFA. From there, the attacker stole the resul
 
 ### 2. Escalate
 
+Once the account was compromised, the attacker took advantage of its Owner rights over the legacy application. A new client secret was created with an expiration date set far into the future. This allowed the attacker to authenticate as the application's service principal and utilize its existing Microsoft Graph permissions without needing to sign in through the compromised user again.
+
+![Microsoft Graph application permissions](the-stolen-identity/screenshots/1.Microsoft%20Graph.png)
+
+![Client secret with long expiration date](the-stolen-identity/screenshots/2.Evidence%20Area.png)
+
 ### 3. Pivot
 
 ### 4. Persist
