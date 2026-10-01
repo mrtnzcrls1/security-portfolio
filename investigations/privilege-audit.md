@@ -28,6 +28,7 @@ This is a security concern because Azure role assignments reference the principa
 
 **Recommendation:** Remove orphaned role assignments after confirming the associated principal has been deleted and the assignment is no longer required.
 ![Azure CLI role assignment audit](privilege-audit/screenshots/01-azure-cli-role-assignments.png)
+*Figure 1 — Azure CLI role assignment enumeration used to identify assignments associated with missing or unresolved principals.*
 
 ### Finding 2 — Redundant Owner Role Assignments
 **Severity: High**
@@ -38,6 +39,7 @@ Owner is a highly privileged role that provides extensive control over Azure res
 
 **Recommendation:** Remove unnecessary Owner assignments and replace them with the narrowest job-function role at the smallest required scope.
 ![KQL](privilege-audit/screenshots/KQL.png)
+*Figure 2 — Azure Resource Graph query used to examine role assignments and identify potentially excessive or redundant privileged access.*
 
 ### Finding 3 — Standing Privileged Access
 **Severity: High**
@@ -48,6 +50,7 @@ Standing privileged access increases risk because permissions remain available e
 
 **Recommendation:** Move standing privileged access to PIM-eligible assignments where appropriate and require activation only when elevated permissions are needed.
 ![RBAC role assignments showing standing privileged access](privilege-audit/screenshots/rbac-role-assignments-redacted.png)
+*Figure 3 — Redacted Azure RBAC export showing active and permanent role assignments used to identify standing privileged access.*
 
 ### Finding 4 — PIM-Eligible Privileged Access
 **Severity: Medium**
@@ -58,6 +61,7 @@ Reviewing PIM also provided visibility into whether privileged roles were eligib
 
 **Recommendation:** Continue using PIM for privileged roles and require justification, MFA, and time-limited activation for elevated access where appropriate.
 ![PIM eligible role assignment](privilege-audit/screenshots/Export%202.png)
+*Figure 4 — Azure Privileged Identity Management (PIM) showing an eligible role assignment that can be activated when elevated access is required.*
 
 ### Finding 5 — Over-Provisioned Account
 **Severity: High**
