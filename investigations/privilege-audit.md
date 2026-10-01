@@ -37,7 +37,7 @@ The audit identified multiple Owner role assignments across different scopes. Se
 Owner is a highly privileged role that provides extensive control over Azure resources, including the ability to manage access. Redundant Owner assignments increase the attack surface and make access management more difficult to audit.
 
 **Recommendation:** Remove unnecessary Owner assignments and replace them with the narrowest job-function role at the smallest required scope.
-![KQL](privilege-audit/screenshots/KQL.png).
+![KQL](privilege-audit/screenshots/KQL.png)
 
 ### Finding 3 — Standing Privileged Access
 **Severity: High**
