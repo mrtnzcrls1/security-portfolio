@@ -27,6 +27,7 @@ The audit identified a role assignment associated with a principal that no longe
 This is a security concern because Azure role assignments reference the principal by its object ID. Leaving the assignment behind creates unnecessary privileged access and makes the environment harder to audit and maintain.
 
 **Recommendation:** Remove orphaned role assignments after confirming the associated principal has been deleted and the assignment is no longer required.
+
 ![Azure CLI role assignment audit](privilege-audit/screenshots/01-azure-cli-role-assignments.png)
 *Figure 1 — Azure CLI role assignment enumeration used to identify assignments associated with missing or unresolved principals.*
 
@@ -38,6 +39,7 @@ The audit identified multiple Owner role assignments across different scopes. Se
 Owner is a highly privileged role that provides extensive control over Azure resources, including the ability to manage access. Redundant Owner assignments increase the attack surface and make access management more difficult to audit.
 
 **Recommendation:** Remove unnecessary Owner assignments and replace them with the narrowest job-function role at the smallest required scope.
+
 ![KQL](privilege-audit/screenshots/KQL.png)
 *Figure 2 — Azure Resource Graph query used to examine role assignments and identify potentially excessive or redundant privileged access.*
 
@@ -49,6 +51,7 @@ The audit identified privileged access that was assigned permanently rather than
 Standing privileged access increases risk because permissions remain available even when not actively needed. PIM reduces this exposure by allowing privileged roles to be activated only when required.
 
 **Recommendation:** Move standing privileged access to PIM-eligible assignments where appropriate and require activation only when elevated permissions are needed.
+
 ![RBAC role assignments showing standing privileged access](privilege-audit/screenshots/rbac-role-assignments-redacted.png)
 *Figure 3 — Redacted Azure RBAC export showing active and permanent role assignments used to identify standing privileged access.*
 
@@ -60,6 +63,7 @@ The PIM review identified privileged roles that were configured as eligible rath
 Reviewing PIM also provided visibility into whether privileged roles were eligible or active and when elevated access had been activated.
 
 **Recommendation:** Continue using PIM for privileged roles and require justification, MFA, and time-limited activation for elevated access where appropriate.
+
 ![PIM eligible role assignment](privilege-audit/screenshots/Export%202.png)
 *Figure 4 — Azure Privileged Identity Management (PIM) showing an eligible role assignment that can be activated when elevated access is required.*
 
