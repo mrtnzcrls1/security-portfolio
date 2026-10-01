@@ -44,20 +44,20 @@ Owner is a highly privileged role that provides extensive control over Azure res
 
 The audit identified privileged access that was assigned permanently rather than managed through Privileged Identity Management (PIM) as eligible access.
 
-Standing privileged access increases risk because the permissions remain continuously available even when they are not actively needed. PIM reduces this exposure by allowing privileged roles to be activated only when required.
+Standing privileged access increases risk because permissions remain available even when not actively needed. PIM reduces this exposure by allowing privileged roles to be activated only when required.
 
 **Recommendation:** Move standing privileged access to PIM-eligible assignments where appropriate and require activation only when elevated permissions are needed.
-![rbac-role-assignments-redacted](rbac-role-assignments-redacted.png)
+![RBAC role assignments showing standing privileged access](privilege-audit/screenshots/rbac-role-assignments-redacted.png)
 
 ### Finding 4 — PIM-Eligible Privileged Access
 **Severity: Medium**
 
-The PIM review identified privileged roles that were configured as eligible rather than permanently active. This demonstrated how privileged access can be made available when needed without providing continuous elevated permissions.
+The PIM review identified privileged roles that were configured as eligible rather than permanently active. This showed that privileged access can be made available when needed without granting continuous elevated permissions.
 
 Reviewing PIM also provided visibility into whether privileged roles were eligible or active and when elevated access had been activated.
 
 **Recommendation:** Continue using PIM for privileged roles and require justification, MFA, and time-limited activation for elevated access where appropriate.
-![Export 2](Export 2.png)
+![PIM eligible role assignment](privilege-audit/screenshots/Export%202.png)
 
 ### Finding 5 — Over-Provisioned Account
 **Severity: High**
