@@ -27,6 +27,7 @@ The audit identified a role assignment associated with a principal that no longe
 This is a security concern because Azure role assignments reference the principal by its object ID. Leaving the assignment behind creates unnecessary privileged access and makes the environment harder to audit and maintain.
 
 **Recommendation:** Remove orphaned role assignments after confirming the associated principal has been deleted and the assignment is no longer required.
+![Azure CLI role assignment audit](privilege-audit/screenshots/01-azure-cli-role-assignments.png)
 
 ### Finding 2 — Redundant Owner Role Assignments
 **Severity: High**
@@ -36,6 +37,7 @@ The audit identified multiple Owner role assignments across different scopes. Se
 Owner is a highly privileged role that provides extensive control over Azure resources, including the ability to manage access. Redundant Owner assignments increase the attack surface and make access management more difficult to audit.
 
 **Recommendation:** Remove unnecessary Owner assignments and replace them with the narrowest job-function role at the smallest required scope.
+![KQL](privilege-audit/screenshots/KQL.png).
 
 ### Finding 3 — Standing Privileged Access
 **Severity: High**
@@ -45,6 +47,7 @@ The audit identified privileged access that was assigned permanently rather than
 Standing privileged access increases risk because the permissions remain continuously available even when they are not actively needed. PIM reduces this exposure by allowing privileged roles to be activated only when required.
 
 **Recommendation:** Move standing privileged access to PIM-eligible assignments where appropriate and require activation only when elevated permissions are needed.
+![rbac-role-assignments-redacted](rbac-role-assignments-redacted.png)
 
 ### Finding 4 — PIM-Eligible Privileged Access
 **Severity: Medium**
@@ -54,6 +57,7 @@ The PIM review identified privileged roles that were configured as eligible rath
 Reviewing PIM also provided visibility into whether privileged roles were eligible or active and when elevated access had been activated.
 
 **Recommendation:** Continue using PIM for privileged roles and require justification, MFA, and time-limited activation for elevated access where appropriate.
+![Export 2](Export 2.png)
 
 ### Finding 5 — Over-Provisioned Account
 **Severity: High**
