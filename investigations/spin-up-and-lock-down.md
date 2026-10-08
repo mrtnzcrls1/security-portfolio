@@ -30,6 +30,14 @@ The new application was missing a managed identity, unlike the production applic
 
 ![Production managed identity](spin-up-and-lock-down/screenshots/production-managed-identity.png)
 
+**Evidence: New Function App has no user-assigned managed identity.**
+
+![Missing user-assigned managed identity](spin-up-and-lock-down/screenshots/09-user-assigned-identity-missing.png)
+
+**Evidence: System-assigned managed identity is disabled.**
+
+![System-assigned identity disabled](spin-up-and-lock-down/screenshots/08-system-assigned-identity-off.png)
+
 ### 3. The Leak
 
 I discovered a storage container configured for anonymous public access. To verify the exposure, I copied a blob URL and opened it in a private browser window without signing into Azure.
