@@ -7,7 +7,7 @@ Target role: SOC Analyst / Security Analyst
 
 Currently: SMT | Reno, NV
 
-Contact: mrtnz_crls1@proton.me · [LinkedIn URL]
+Contact: mrtnz_crls1@proton.me · [LinkedIn Profile](https://www.linkedin.com/in/carlos-martinez-cybersecurity)
 
 ## Investigations
 | # | Title | Focus | Write-up |
