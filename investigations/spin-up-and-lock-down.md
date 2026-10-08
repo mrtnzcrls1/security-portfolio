@@ -82,6 +82,8 @@ What surprised me was that a simple storage setting could be more dangerous than
 
 ## Findings and Recommendations
 
-I recommended immediately disabling anonymous access to the storage container and reviewing its contents for sensitive information. The remaining fixes included restricting inbound traffic, configuring managed identity with least-privilege permissions, and redeploying the application to the approved region.
+I recommended immediately disabling anonymous access to the storage container and reviewing its contents for sensitive information.
+
+The remaining fixes included configuring a managed identity with least-privilege permissions, removing stored credentials, restricting inbound traffic with an explicit deny rule, and redeploying the application to the approved region.
 
 Automated pre-deployment security checks could help prevent these issues from happening again.
