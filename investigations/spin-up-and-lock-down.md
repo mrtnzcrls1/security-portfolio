@@ -18,15 +18,35 @@ This investigation involved reviewing a new Azure deployment before it went into
 
 The new Function App was deployed in a different region from the production environment. This could increase latency, costs, and create potential data residency issues.
 
+**Evidence:** Azure Function App Overview showing the deployment in Australia East.
+
+![Function App deployed in Australia East](spin-up-and-lock-down/screenshots/azure-function-app-overview.png)
+
 ### 2. The Who
 
 The new application was missing a managed identity, unlike the production application. Without one, developers may rely on stored credentials to authenticate to Azure services, increasing the risk of credential exposure.
+
+**Evidence:** The production Function App uses a user-assigned managed identity, establishing the expected configuration baseline.
+
+![Production managed identity](spin-up-and-lock-down/screenshots/production-managed-identity.png)
 
 ### 3. The Leak
 
 I discovered a storage container configured for anonymous public access. To verify the exposure, I copied a blob URL and opened it in a private browser window without signing into Azure.
 
 The file loaded successfully, confirming that anyone with the URL could access its contents without authentication.
+
+**Evidence 1: Storage container configured for anonymous Blob access.**
+
+![Public storage container](spin-up-and-lock-down/screenshots/public-storage-container.png)
+
+**Evidence 2: Anonymous Blob access configuration.**
+
+![Anonymous Blob access](spin-up-and-lock-down/screenshots/05-anonymous-blob-access.png)
+
+**Evidence 3: Successful unauthenticated Blob access.**
+
+![Private browser confirming public blob exposure](spin-up-and-lock-down/screenshots/06-private-blob-access.png)
 
 ### 4. The Door
 
