@@ -15,7 +15,7 @@ Contact: mrtnz_crls1@proton.me · [LinkedIn URL]
 | 1 | Operation Dead Deploy | Governance forensics, deployment audit trail | [View write-up](investigations/operation-dead-deploy.md) |
 | 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | [View write-up](investigations/the-stolen-identity.md) |
 | 3 | Privilege Audit | RBAC and least privilege | [View write-up](investigations/privilege-audit.md) |
-| 4 | Spin Up and Lock Down | Compute attack surface | coming, week 4 |
+| 4 | Spin Up and Lock Down | Compute security review, exposure prioritization | [View write-up](investigations/spin-up-and-lock-down.md) |
 | 5 | Network the Operative | Network segmentation | coming, week 5 |
 | 6 | Bucket Looting | Storage exposure hunting | coming, week 6 |
 | 7 | Find the Anomaly | Log analysis and KQL | coming, week 7 |
