@@ -16,7 +16,9 @@ This investigation involved reviewing a new Azure deployment before it went into
 
 ### 1. The Where
 
-The new Function App was deployed in a different region from the production environment. This could increase latency, costs, and create potential data residency issues.
+The new Function App was deployed in a different Azure region from the production environment. This could increase latency, cause additional inter-region data transfer costs, and create potential data residency concerns.
+
+Deploying resources in the wrong region can also result in unnecessary expenses and performance issues.
 
 **Evidence:** Azure Function App Overview showing the deployment in Australia East.
 
