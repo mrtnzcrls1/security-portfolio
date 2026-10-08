@@ -54,6 +54,12 @@ The new Function App allowed inbound traffic from all networks without restricti
 
 This increased the application's attack surface, although it did not prove the application was compromised.
 
+
+**Evidence:** The Function App's inbound traffic configuration shows public network access enabled without access restrictions.
+
+![Function App network access restrictions](spin-up-and-lock-down/screenshots/07-network-access-restrictions.png)
+  
+
 ## Priority Call
 
 Of the four findings, I prioritized the publicly accessible storage container because it was the only confirmed active exposure.
