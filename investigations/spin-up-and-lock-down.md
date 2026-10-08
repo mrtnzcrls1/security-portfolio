@@ -54,7 +54,7 @@ The file loaded successfully, confirming that anyone with the URL could access i
 
 **Evidence 3: Successful unauthenticated Blob access.**
 
-![Private browser confirming public blob exposure](spin-up-and-lock-down/screenshots/06-private-blob-access.png)
+![Private browser confirming public blob exposure](spin-up-and-lock-down/screenshots/006-private-blob-access.png)
 
 ### 4. The Door
 
