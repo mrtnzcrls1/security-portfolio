@@ -3,6 +3,20 @@
 ## Objective
 Investigate how an application workload communicates with Azure Storage through a private endpoint. Review the virtual network, security rules, routing, private endpoint, and DNS configuration to understand the network path.
 
+## Environment
+
+- **Platform:** Microsoft Azure
+- **Environment:** Live multi-user Azure training tenant
+- **Access Level:** Reader access
+- **Tools:** Azure Portal
+- **Services Investigated:**
+  - Azure Virtual Network (VNet)
+  - Network Security Groups (NSGs)
+  - User-Defined Routes (UDRs)
+  - Azure Private Endpoint
+  - Azure Private DNS (Domain Name System)
+  - Azure Storage
+
 ## The Ticket
 The application team wants to understand how its workload can reach Azure Storage privately and why traffic may bypass the firewall despite a forced-egress route.
 
