@@ -30,6 +30,8 @@ The application team wants to understand how its workload can reach Azure Storag
 
 **What it means:** The application operates within this subnet. Its address range identifies the network where the workload originates.
 
+![HOP 1 - Virtual Network](network-like-an-op/screenshots/01-vnet-workload-subnet.png)
+
 ### Hop 2 — Network Security Group (NSG)
 
 **Checked:** `nsg-lab-workload` → Inbound security rules
@@ -37,6 +39,8 @@ The application team wants to understand how its workload can reach Azure Storag
 **Found:** The `allow-vpn-https` rule permits inbound HTTPS (Hypertext Transfer Protocol Secure) traffic from `203.0.113.50`.
 
 **What it means:** The rule allows a specific source address to connect using HTTPS rather than allowing unrestricted inbound access. This is an inbound rule; outbound access to Storage must be evaluated separately.
+
+![HOP 2 - NSG Inbound Rule](network-like-an-op/screenshots/02-nsg-inbound-rule.png)
 
 ### Hop 3 — Route Table
 
@@ -46,6 +50,8 @@ The application team wants to understand how its workload can reach Azure Storag
 
 **What it means:** The route directs matching outbound traffic toward a network appliance for inspection. However, Azure selects routes using longest-prefix matching, so a more specific route can take precedence.
 
+![HOP 3 - Route Table](network-like-an-op/screenshots/03-Route%20Table.png)
+
 ### Hop 4 — Private Endpoint
 
 **Checked:** `pe-lab-storage` → DNS configuration
@@ -54,6 +60,8 @@ The application team wants to understand how its workload can reach Azure Storag
 
 **What it means:** Azure Storage can be accessed through a private IP inside the virtual network rather than through its public endpoint.
 
+![HOP 4 - Private Endpoint](network-like-an-op/screenshots/04-private-endpoint.png)
+
 ### Hop 5 — Domain Name System (DNS)
 
 **Checked:** `privatelink.blob.core.windows.net` → A record
@@ -61,6 +69,8 @@ The application team wants to understand how its workload can reach Azure Storag
 **Found:** `stmadhatlabchap5.privatelink.blob.core.windows.net`
 
 **What it means:** The private DNS zone maps the Storage service's hostname to its private endpoint IP, allowing applications to use a hostname instead of hardcoding an address.
+
+![HOP 5 - Private DNS Record](network-like-an-op/screenshots/05-private-dns-record.png)
 
 ## Answer to the Application Team
 
