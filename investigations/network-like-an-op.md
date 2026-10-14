@@ -40,7 +40,7 @@ Application Team: "Our new service can reach the customer-data storage account, 
 
 **Found:** The `allow-vpn-https` rule permits inbound HTTPS (Hypertext Transfer Protocol Secure) traffic from `203.0.113.50`.
 
-**What it means:** The rule allows a specific source address to connect using HTTPS rather than allowing unrestricted inbound access. This is an inbound rule; outbound access to Storage must be evaluated separately.
+**What it means:** The rule allows a specific source address to connect using HTTPS rather than allowing unrestricted inbound access. This is an inbound rule; outbound access to Storage must be evaluated separately. This inbound rule was verified, but outbound NSG rules would need to be reviewed separately to confirm permitted traffic to Azure Storage.
 
 ![HOP 2 - NSG Inbound Rule](network-like-an-op/screenshots/02-nsg-inbound-rule.png)
 
@@ -50,7 +50,7 @@ Application Team: "Our new service can reach the customer-data storage account, 
 
 **Found:** The route points to next-hop IP (Internet Protocol) address `10.60.100.4`.
 
-**What it means:** The route directs matching outbound traffic toward a network appliance for inspection. However, Azure selects routes using longest-prefix matching, so a more specific route can take precedence.
+**What it means:** The route directs matching outbound traffic toward a network appliance for inspection. However, Azure selects routes using longest-prefix matching, so a more specific route can take precedence. The configuration indicates that the private endpoint's /32 route takes precedence over the default route. Effective routes or a connectivity test would be needed to confirm the actual traffic path.
 
 ![HOP 3 - Route Table](network-like-an-op/screenshots/03-Route%20Table.png)
 
