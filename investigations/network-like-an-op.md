@@ -18,7 +18,12 @@ Investigate how an application workload communicates with Azure Storage through 
   - Azure Storage
 
 ## The Ticket
+
 The application team wants to understand how its workload can reach Azure Storage privately and why traffic may bypass the firewall despite a forced-egress route.
+
+## Network Path Diagram
+
+![Azure Network Path Diagram](network-like-an-op/screenshots/AzurePrivateEndpointNetworkFlow.png)
 
 ## Network Trace
 
