@@ -74,15 +74,15 @@ The application team wants to understand how its workload can reach Azure Storag
 
 ## Answer to the Application Team
 
-The application operates in `snet-workload` within `vnet-lab-chap5`. The network security group controls permitted traffic, while the route table directs matching outbound traffic toward `10.60.100.4`.
+The application runs in snet-workload (10.60.1.0/24) within vnet-lab-chap5. The Network Security Group (NSG) controls permitted traffic, while the route table directs outbound traffic toward the virtual appliance at 10.60.100.4.
 
-Azure Storage is accessible through a private endpoint at `10.60.1.62`. Private DNS allows the application to resolve the Storage service to its private address.
-
-A private endpoint's specific `/32` route can take precedence over a general `0.0.0.0/0` forced-egress route, explaining why Storage traffic may bypass the firewall.
+Azure Storage is accessed through the private endpoint at 10.60.1.62, and Private DNS resolves the storage hostname to that private IP address. Azure's more specific /32 private endpoint system route takes precedence over the general 0.0.0.0/0 forced-egress route. This explains why storage traffic can bypass the firewall while remaining within the private network path.
 
 ## Security Observations
 
-The inbound HTTPS rule restricts access to a specific source IP. However, the network team should verify that Storage traffic bypassing the firewall is intentional and that public network access to the Storage account is disabled.
+The application runs in snet-workload (10.60.1.0/24) within vnet-lab-chap5. The Network Security Group (NSG) controls permitted traffic, while the route table directs outbound traffic toward the virtual appliance at 10.60.100.4.
+
+Azure Storage is accessed through the private endpoint at 10.60.1.62, and Private DNS resolves the storage hostname to that private IP address. Azure's more specific /32 private endpoint system route takes precedence over the general 0.0.0.0/0 forced-egress route. This explains why storage traffic can bypass the firewall while remaining within the private network path.
 
 ## Lessons Learned
 
