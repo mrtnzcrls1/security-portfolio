@@ -1,7 +1,8 @@
 # Week 5 — Network Like an Op
 
-## Objective
-Investigate how an application workload communicates with Azure Storage through a private endpoint. Review the virtual network, security rules, routing, private endpoint, and DNS configuration to understand the network path.
+## The Ticket
+
+Application Team: "Our new service can reach the customer-data storage account, but I don't understand why or how. Can someone walk me through the network path?"
 
 ## Environment
 
@@ -16,10 +17,6 @@ Investigate how an application workload communicates with Azure Storage through 
   - Azure Private Endpoint
   - Azure Private DNS (Domain Name System)
   - Azure Storage
-
-## The Ticket
-
-The application team wants to understand how its workload can reach Azure Storage privately and why traffic may bypass the firewall despite a forced-egress route.
 
 ## Network Path Diagram
 
