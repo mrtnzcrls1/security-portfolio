@@ -84,10 +84,6 @@ Azure Storage is accessed through the private endpoint at 10.60.1.62, and Privat
 
 The private endpoint's more specific route allows storage traffic to bypass the firewall. Although this behavior is expected in Azure, the network team should verify that bypassing firewall inspection is intentional and consistent with security requirements.
 
-## Lessons Learned
 
-- Network Security Groups control permitted traffic.
-- Route tables determine where packets are forwarded.
-- More specific routes take precedence over broader routes.
-- Private Endpoints provide private access to Azure services.
-- DNS resolves service hostnames to private IP addresses.
+
+
