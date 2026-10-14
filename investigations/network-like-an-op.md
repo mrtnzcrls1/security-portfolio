@@ -82,9 +82,7 @@ Azure Storage is accessed through the private endpoint at 10.60.1.62, and Privat
 
 ## Security Observations
 
-The application runs in snet-workload (10.60.1.0/24) within vnet-lab-chap5. The Network Security Group (NSG) controls permitted traffic, while the route table directs outbound traffic toward the virtual appliance at 10.60.100.4.
-
-Azure Storage is accessed through the private endpoint at 10.60.1.62, and Private DNS resolves the storage hostname to that private IP address. Azure's more specific /32 private endpoint system route takes precedence over the general 0.0.0.0/0 forced-egress route. This explains why storage traffic can bypass the firewall while remaining within the private network path.
+The private endpoint's more specific route allows storage traffic to bypass the firewall. Although this behavior is expected in Azure, the network team should verify that bypassing firewall inspection is intentional and consistent with security requirements.
 
 ## Lessons Learned
 
