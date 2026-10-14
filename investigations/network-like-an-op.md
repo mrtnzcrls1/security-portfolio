@@ -23,7 +23,7 @@ The application team wants to understand how its workload can reach Azure Storag
 
 ## Network Path Diagram
 
-![Azure Network Path Diagram](network-like-an-op/screenshots/AzurePrivateEndpointNetworkFlow.png)
+![Azure Network Path Diagram](network-like-an-op/screenshots/Azure-Private-Storage-Network-Flow.png)
 
 ## Network Trace
 
