@@ -16,7 +16,7 @@ Contact: mrtnz_crls1@proton.me · [LinkedIn Profile](https://www.linkedin.com/in
 | 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | [View write-up](investigations/the-stolen-identity.md) |
 | 3 | Privilege Audit | RBAC and least privilege | [View write-up](investigations/privilege-audit.md) |
 | 4 | Spin Up and Lock Down | Compute security review, exposure prioritization | [View write-up](investigations/spin-up-and-lock-down.md) |
-| 5 | Network the Operative | Network segmentation | coming, week 5 |
+| 5 | Network Like an Op | Network segmentation, private endpoints, and routing | [View write-up](investigations/network-like-an-op.md) |
 | 6 | Bucket Looting | Storage exposure hunting | coming, week 6 |
 | 7 | Find the Anomaly | Log analysis and KQL | coming, week 7 |
 | 8 | Hunt the Threat | SIEM operations (Sentinel) | coming, week 8 |
