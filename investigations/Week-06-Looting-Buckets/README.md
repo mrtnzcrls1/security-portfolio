@@ -35,6 +35,30 @@ During the investigation, I examined five components of the data-access chain an
 
 ### Key Finding
 
-The primary storage environment used multiple security controls, including identity-based access and private networking. However, a separate backup storage account exposed data publicly.
+The primary storage environment used multiple security controls, including identity-based access and private networking. However, a separate backup storage account publicly exposed data.
 
 This demonstrated that securing the primary resource does not protect additional copies of the same data.
+
+## Stop 1 — The Data
+
+**Objective:** Identify the primary Azure Storage account and its Blob service endpoint.
+
+**Resource Group:** `rg-madhat-lab-chap6`  
+**Storage Account:** `stmadhatlabchap6`
+
+### Investigation
+
+1. Opened the storage account in Azure Portal.
+2. Navigated to **Overview → JSON View**.
+3. Located the Blob service endpoint.
+4. Removed `https://` and the trailing `/` to isolate the hostname.
+
+**Finding:** `stmadhatlabchap6.blob.core.windows.net`
+
+### Screenshot Evidence
+
+*Screenshot 01 — Azure Storage Account Overview / Blob Endpoint*
+
+### Security Significance
+
+Identifying the Blob endpoint establishes where the application's data is stored and provides the starting point for investigating authentication and network access.
