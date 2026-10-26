@@ -1,64 +1,90 @@
-# Week 6 — Looting Buckets
 
-## Investigation Overview
+# Azure Storage Security Investigation — Exposed Backup Data
 
 **Platform:** Microsoft Azure  
-**Course:** Mad Hat Labs — Azure Fundamentals  
-**Focus:** Cloud Storage Security, Identity, Private Networking, and Key Vault
+**Environment:** Live multi-user Azure training tenant (Mad Hat Labs)  
+**Focus:** Cloud Storage Security, IAM, RBAC, Private Endpoints, and Key Vault
 
-## Environment
+## Objective
 
-- **Platform:** Microsoft Azure
-- **Environment:** Live multi-user Azure training tenant
-- **Tools:** Azure Portal, Firefox (Private Browsing)
-- **Services Investigated:**
-  - Azure Storage Accounts
-  - Azure Blob Storage
-  - Azure Role-Based Access Control (RBAC)
-  - Azure Managed Identities
-  - Azure Private Endpoints
-  - Azure Key Vault
+Investigate how an Azure application accesses storage securely and identify potential data exposure.
 
-### Objective
+## Investigation
 
-Investigate how an Azure application securely accesses its data through storage accounts, managed identities, private endpoints, and Azure Key Vault.
+### 1. The Data — Storage Account
 
-During the investigation, I examined five components of the data-access chain and discovered a separate backup storage account that allowed anonymous public access.
+- Located the primary Azure Storage account.
+- Examined the resource JSON to identify the Blob service endpoint.
+- Established the starting point for investigating data access.
 
-### Investigation Scope
+![Blob Endpoint](screenshots/01-blob-endpoint.png)
 
-1. **The Data:** Identify the primary storage account and its Blob endpoint.
-2. **The Key Posture:** Examine shared-key authentication and Role-Based Access Control (RBAC).
-3. **The Network:** Verify the private endpoint and its IP address.
-4. **The Secret:** Investigate how application secrets are stored in Azure Key Vault.
-5. **The Loot:** Identify an exposed backup container accessible without authentication.
+### 2. The Key Posture — Authentication
 
-### Key Finding
+- Confirmed shared-key authentication was disabled.
+- Verified anonymous Blob access was disabled.
+- Identified identity-based authentication as the intended access method.
 
-The primary storage environment used multiple security controls, including identity-based access and private networking. However, a separate backup storage account publicly exposed data.
+![Key Posture](screenshots/02-TheKey-Posture.png)
 
-This demonstrated that securing the primary resource does not protect additional copies of the same data.
+### 3. Identity and Access — RBAC
 
-## Stop 1 — The Data
+- Examined the application's managed identity.
+- Confirmed the Storage Blob Data Contributor role.
+- Verified the identity had read/write permissions at the storage resource scope.
 
-**Objective:** Identify the primary Azure Storage account and its Blob service endpoint.
+![Managed Identity and RBAC](screenshots/03-Managed-identity-and-RBAC-role.png)
 
-**Resource Group:** `rg-madhat-lab-chap6`  
-**Storage Account:** `stmadhatlabchap6`
+### 4. The Network — Private Endpoint
 
-### Investigation
+- Inspected the private endpoint's DNS configuration.
+- Identified the private IP address `10.70.1.36`.
+- Confirmed the Blob hostname was associated with the private endpoint.
 
-1. Opened the storage account in Azure Portal.
-2. Navigated to **Overview → JSON View**.
-3. Located the Blob service endpoint.
-4. Removed `https://` and the trailing `/` to isolate the hostname.
+![Private Endpoint DNS](screenshots/04-Private-Endpoint-DNS.png)
 
-**Finding:** `stmadhatlabchap6.blob.core.windows.net`
+### 5. The Secrets — Azure Key Vault
 
-### Screenshot Evidence
+- Located the application's connection secret in Azure Key Vault.
+- Confirmed the secret was enabled.
+- Identified that no expiration date was configured.
 
-*Screenshot 01 — Azure Storage Account Overview / Blob Endpoint*
+![Azure Key Vault Secret](screenshots/05-Azure-Key-Vault-Secret.png)
 
-### Security Significance
+### 6. The Loot — Exposed Backup
 
-Identifying the Blob endpoint establishes where the application's data is stored and provides the starting point for investigating authentication and network access.
+- Discovered a separate backup storage account.
+- Accessed a publicly available JSON export without authentication.
+- Identified exposed customer records and a storage connection string.
+- Redacted sensitive information and training flags before documentation.
+
+![Exposed Backup Data](screenshots/06-Exposed-Backup-Container.png)
+
+## Key Findings
+
+**Positive Security Controls**
+- Shared-key authentication disabled.
+- Anonymous access disabled on primary storage.
+- Managed identity with RBAC permissions.
+- Private endpoint configured for storage access.
+
+**Security Risks**
+- Separate backup storage exposed data publicly.
+- Export contained customer information and a connection string.
+- Key Vault secret had no expiration date.
+
+## Recommendations
+
+1. Disable anonymous access to the exposed backup container.
+2. Remove exposed data and rotate the compromised storage account key.
+3. Review backup storage permissions and network restrictions.
+4. Configure secret expiration and rotation policies.
+5. Audit all storage accounts, including temporary backups.
+
+## Conclusion
+
+The primary storage account used multiple security controls, but a separate backup exposed sensitive data.
+
+**Key Lesson:** Securing production storage does not automatically protect backup copies.
+
+*Investigation performed in an authorized Azure training environment. Sensitive information and challenge answers have been redacted.*
