@@ -25,7 +25,7 @@ Investigate how an Azure application accesses storage securely and identify pote
 - Verified anonymous Blob access was disabled.
 - Identified identity-based authentication as the intended access method.
 
-![Key Posture](screenshots/02-TheKey-Posture.png)
+![Key Posture](screenshots/02-The-Key-Posture.png)
 
 ### 3. Identity and Access — RBAC
 
