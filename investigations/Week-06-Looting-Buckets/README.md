@@ -27,15 +27,13 @@ Investigate how an Azure application accesses storage securely and identify pote
 
 ![Key Posture](screenshots/02-The-Key-Posture.png)
 
-### 3. Identity and Access — RBAC
-
 - Examined the application's managed identity.
 - Confirmed the Storage Blob Data Contributor role.
 - Verified the identity had read/write permissions at the storage resource scope.
 
 ![Managed Identity and RBAC](screenshots/03-Managed-identity-and-RBAC-role.png)
 
-### 4. The Network — Private Endpoint
+### 3. The Network — Private Endpoint
 
 - Inspected the private endpoint's DNS configuration.
 - Identified the private IP address `10.70.1.36`.
@@ -43,7 +41,7 @@ Investigate how an Azure application accesses storage securely and identify pote
 
 ![Private Endpoint DNS](screenshots/04-Private-Endpoint-DNS.png)
 
-### 5. The Secrets — Azure Key Vault
+### 4. The Secrets — Azure Key Vault
 
 - Located the application's connection secret in Azure Key Vault.
 - Confirmed the secret was enabled.
@@ -51,7 +49,7 @@ Investigate how an Azure application accesses storage securely and identify pote
 
 ![Azure Key Vault Secret](screenshots/05-Azure-Key-Vault-Secret.png)
 
-### 6. The Loot — Exposed Backup
+### 5. The Loot — Exposed Backup
 
 - Discovered a separate backup storage account.
 - Accessed a publicly available JSON export without authentication.
