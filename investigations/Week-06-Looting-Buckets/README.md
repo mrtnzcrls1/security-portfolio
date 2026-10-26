@@ -1,9 +1,14 @@
 
 # Azure Storage Security Investigation — Exposed Backup Data
 
-**Platform:** Microsoft Azure  
-**Environment:** Live multi-user Azure training tenant (Mad Hat Labs)  
-**Focus:** Cloud Storage Security, IAM, RBAC, Private Endpoints, and Key Vault
+
+## Environment
+
+- **Platform:** Microsoft Azure
+- **Lab:** Mad Hat Labs — Azure Fundamentals
+- **Tools:** Azure Portal, Firefox
+- **Services:** Azure Blob Storage, Managed Identities, RBAC, Private Endpoints, Azure Key Vault
+  
 
 ## Objective
 
